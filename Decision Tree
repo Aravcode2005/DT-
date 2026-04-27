@@ -1,0 +1,373 @@
+{
+  "nodes": [
+    {
+      "id": "START",
+      "type": "start",
+      "text": "Good evening. Let’s take a moment to reflect on your day.",
+      "next": "A1_OPEN"
+    },
+
+    // ---------------- AXIS 1 ----------------
+
+    {
+      "id": "A1_OPEN",
+      "type": "question",
+      "text": "Where did most of your energy go today?",
+      "options": [
+        "Getting things done",
+        "Dealing with problems",
+        "A bit of both",
+        "Feeling stuck"
+      ],
+      "next": "A1_DECIDE"
+    },
+    {
+      "id": "A1_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["Getting things done"],
+          "goTo": "A1_HIGH"
+        },
+        {
+          "if": ["Dealing with problems", "A bit of both", "Feeling stuck"],
+          "goTo": "A1_LOW"
+        }
+      ]
+    },
+
+    // LOW PATH
+    {
+      "id": "A1_LOW",
+      "type": "question",
+      "text": "When things didn’t go as expected today, what felt most natural?",
+      "options": [
+        "Try to fix what I could",
+        "Wait for things to resolve",
+        "Feel frustrated at the situation",
+        "Not know what to do"
+      ],
+      "next": "A1_LOW_DECIDE"
+    },
+    {
+      "id": "A1_LOW_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["Try to fix what I could"],
+          "goTo": "A1_INT_REF"
+        },
+        {
+          "if": [
+            "Wait for things to resolve",
+            "Feel frustrated at the situation",
+            "Not know what to do"
+          ],
+          "goTo": "A1_EXT_REF"
+        }
+      ]
+    },
+    {
+      "id": "A1_INT_REF",
+      "type": "reflection",
+      "text": "You didn’t wait for things to change — you stepped in and acted.",
+      "signal": { "axis1": "internal" },
+      "next": "BRIDGE_1_2B"
+    },
+    {
+      "id": "A1_EXT_REF",
+      "type": "reflection",
+      "text": "Days like this can feel out of your hands. Still, somewhere in there, you made a call — even if it was small.",
+      "signal": { "axis1": "external" },
+      "next": "A1_LOW_DEEP_Q"
+    },
+    {
+      "id": "A1_LOW_DEEP_Q",
+      "type": "question",
+      "text": "What made it harder to act in that moment?",
+      "options": [
+        "I kept second-guessing myself",
+        "I was waiting for someone else to step in",
+        "I felt overwhelmed by everything happening",
+        "I didn’t know what the right move was"
+      ],
+      "signal": { "axis1": "external" },
+      "next": "A1_LOW_DEEP_REF"
+    },
+    {
+      "id": "A1_LOW_DEEP_REF",
+      "type": "reflection",
+      "text": "There was a gap between knowing what to do and acting on it. That gap is where most days get shaped.",
+      "signal": { "axis1": "external" },
+      "next": "BRIDGE_1_2A"
+    },
+
+    // HIGH PATH
+    {
+      "id": "A1_HIGH",
+      "type": "question",
+      "text": "What helped you act in that moment?",
+      "options": [
+        "I had a clear next step",
+        "I trusted my judgment",
+        "I moved quickly instead of overthinking",
+        "I had support or context from others"
+      ],
+      "next": "A1_HIGH_DECIDE"
+    },
+    {
+      "id": "A1_HIGH_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["I trusted my judgment", "I moved quickly instead of overthinking"],
+          "goTo": "A1_HIGH_STRONG"
+        },
+        {
+          "if": ["I had a clear next step"],
+          "goTo": "A1_HIGH_MID"
+        },
+        {
+          "if": ["I had support or context from others"],
+          "goTo": "A1_HIGH_EXT"
+        }
+      ]
+    },
+    {
+      "id": "A1_HIGH_STRONG",
+      "type": "reflection",
+      "text": "You didn’t hesitate — you acted. That kind of response is something you’ve built over time.",
+      "signal": { "axis1": "internal" },
+      "next": "BRIDGE_1_2B"
+    },
+    {
+      "id": "A1_HIGH_MID",
+      "type": "reflection",
+      "text": "You had enough clarity to act. That structure helped you move forward.",
+      "signal": { "axis1": "internal" },
+      "next": "BRIDGE_1_2C"
+    },
+    {
+      "id": "A1_HIGH_EXT",
+      "type": "reflection",
+      "text": "Support around you helped you act. That still moved things forward.",
+      "signal": { "axis1": "external" },
+      "next": "BRIDGE_1_2D"
+    },
+
+    // BRIDGE
+    {
+      "id": "BRIDGE_1_2A",
+      "type": "bridge",
+      "text": "How you handled things is one part of the story. Let’s look at what you gave.",
+      "next": "A2_OPEN"
+    },
+    {
+      "id": "BRIDGE_1_2B",
+      "type": "bridge",
+      "text": "How you handled things is one part of the story. Let’s look at what you gave.",
+      "next": "A2_OPEN"
+    },
+    {
+      "id": "BRIDGE_1_2C",
+      "type": "bridge",
+      "text": "How you handled things is one part of the story. Let’s look at what you gave.",
+      "next": "A2_OPEN"
+    },
+    {
+      "id": "BRIDGE_1_2D",
+      "type": "bridge",
+      "text": "How you handled things is one part of the story. Let’s look at what you gave.",
+      "next": "A2_OPEN"
+    },
+
+    // ---------------- AXIS 2 ----------------
+
+    {
+      "id": "A2_OPEN",
+      "type": "question",
+      "text": "In your interactions today, what did you find yourself focusing on?",
+      "options": [
+        "Helping someone move forward",
+        "Sharing what I know",
+        "Wanting recognition for my work",
+        "Feeling others weren’t doing enough"
+      ],
+      "next": "A2_DECIDE"
+    },
+    {
+      "id": "A2_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["Helping someone move forward", "Sharing what I know"],
+          "goTo": "A2_CONTRIB"
+        },
+        {
+          "if": ["Wanting recognition for my work", "Feeling others weren’t doing enough"],
+          "goTo": "A2_ENTITLE"
+        }
+      ]
+    },
+    {
+      "id": "A2_CONTRIB",
+      "type": "reflection",
+      "text": "You showed up for someone today. That kind of effort builds more than it seems.",
+      "signal": { "axis2": "contribution" },
+      "next": "A2_FOLLOW"
+    },
+    {
+      "id": "A2_ENTITLE",
+      "type": "reflection",
+      "text": "Wanting recognition is natural. But shifting your focus to what you give often changes how those moments feel.",
+      "signal": { "axis2": "entitlement" },
+      "next": "A2_FOLLOW"
+    },
+    {
+      "id": "A2_FOLLOW",
+      "type": "question",
+      "text": "What made that moment stand out to you?",
+      "options": [
+        "It took more effort than usual",
+        "It changed how I was feeling",
+        "It felt meaningful in some way",
+        "It stayed on my mind afterward"
+      ],
+      "next": "A2_FOLLOW_DECIDE"
+    },
+    {
+      "id": "A2_FOLLOW_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["It felt meaningful in some way"],
+          "goTo": "A2_MEANING"
+        },
+        {
+          "if": [
+            "It took more effort than usual",
+            "It changed how I was feeling",
+            "It stayed on my mind afterward"
+          ],
+          "goTo": "A2_NEUTRAL"
+        }
+      ]
+    },
+    {
+      "id": "A2_MEANING",
+      "type": "reflection",
+      "text": "Some moments stand out because of what you gave — whether you noticed it then or not.",
+      "signal": { "axis2": "contribution" },
+      "next": "BRIDGE_2_3"
+    },
+    {
+      "id": "A2_NEUTRAL",
+      "type": "reflection",
+      "text": "Some moments stand out because of what you gave — whether you noticed it then or not.",
+      "next": "BRIDGE_2_3"
+    },
+
+    {
+      "id": "BRIDGE_2_3",
+      "type": "bridge",
+      "text": "Let’s widen the lens a bit.",
+      "next": "A3_OPEN"
+    },
+
+    // ---------------- AXIS 3 ----------------
+
+    {
+      "id": "A3_OPEN",
+      "type": "question",
+      "text": "When you think about today, who was at the center of your attention?",
+      "options": [
+        "Mostly me",
+        "Me, but influenced by others",
+        "Someone else on my team",
+        "The customer or end user"
+      ],
+      "next": "A3_DECIDE"
+    },
+    {
+      "id": "A3_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["Mostly me", "Me, but influenced by others"],
+          "goTo": "A3_SELF"
+        },
+        {
+          "if": ["Someone else on my team", "The customer or end user"],
+          "goTo": "A3_OTHER"
+        }
+      ]
+    },
+    {
+      "id": "A3_SELF",
+      "type": "reflection",
+      "text": "When everything sits on you, the day can feel heavier than it is. Sometimes, there’s more happening around you than it seems.",
+      "signal": { "axis3": "self" },
+      "next": "A3_FOLLOW"
+    },
+    {
+      "id": "A3_OTHER",
+      "type": "reflection",
+      "text": "You paid attention to others today. That usually brings a clearer sense of what matters.",
+      "signal": { "axis3": "other" },
+      "next": "A3_FOLLOW"
+    },
+    {
+      "id": "A3_FOLLOW",
+      "type": "question",
+      "text": "What did you notice about them in that moment?",
+      "options": [
+        "Their actions affected how I felt",
+        "They needed support or clarity",
+        "They were dealing with their own challenges",
+        "What they did felt meaningful to me"
+      ],
+      "next": "A3_FOLLOW_DECIDE"
+    },
+    {
+      "id": "A3_FOLLOW_DECIDE",
+      "type": "decision",
+      "rules": [
+        {
+          "if": ["They needed support or clarity", "They were dealing with their own challenges"],
+          "goTo": "A3_STRONG"
+        },
+        {
+          "if": ["Their actions affected how I felt", "What they did felt meaningful to me"],
+          "goTo": "A3_NEUTRAL"
+        }
+      ]
+    },
+    {
+      "id": "A3_STRONG",
+      "type": "reflection",
+      "text": "You noticed what others were dealing with. That kind of attention tends to change how the day feels.",
+      "signal": { "axis3": "other" },
+      "next": "SUMMARY"
+    },
+    {
+      "id": "A3_NEUTRAL",
+      "type": "reflection",
+      "text": "Some moments shift when you look beyond your own experience.",
+      "next": "SUMMARY"
+    },
+
+    // ---------------- SUMMARY ----------------
+
+    {
+      "id": "SUMMARY",
+      "type": "summary",
+      "text": "Today, you leaned {axis1.dominant} when things got difficult, focused on {axis2.dominant} in your actions, and saw the day through {axis3.dominant}. That combination shapes how your day felt.",
+      "next": "END"
+    },
+    {
+      "id": "END",
+      "type": "end",
+      "text": "That’s enough for today."
+    }
+  ]
+}
