@@ -118,14 +118,13 @@ pre-defined
 auditable
 consistent across sessions
 Project Structure
-  DecisionTree.json      
-  tree-diagram.md                  
-  write-up.md               
-  README.md                  
-  Running the Agent (Optional)
-
+  DecisionTree.json    
+  README.md
+  mermaid-diagram.png                 
+  write-up.md         
+  transcript1.md
+  transcript2.md
 If implemented, the agent:
-
 Loads reflection-tree.json
 Starts at START
 Renders each node
