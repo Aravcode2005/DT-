@@ -118,13 +118,11 @@ pre-defined
 auditable
 consistent across sessions
 Project Structure
-/tree/
-  reflection-tree.json      # core tree data
-  tree-diagram.md           # visual structure
-/transcripts/               # (optional) sample runs
-write-up.md                 # design explanation
-README.md                   # this file
-Running the Agent (Optional)
+  DecisionTree.json      
+  tree-diagram.md                  
+  write-up.md               
+  README.md                  
+  Running the Agent (Optional)
 
 If implemented, the agent:
 
