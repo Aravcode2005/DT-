@@ -121,10 +121,7 @@ Project Structure
 /tree/
   reflection-tree.json      # core tree data
   tree-diagram.md           # visual structure
-
-/agent/                     # (optional) runtime engine
 /transcripts/               # (optional) sample runs
-
 write-up.md                 # design explanation
 README.md                   # this file
 Running the Agent (Optional)
@@ -161,7 +158,6 @@ testing clarity of options
 refining wording
 
 All final outputs were:
-
 manually reviewed
 simplified
 encoded deterministically
@@ -175,7 +171,7 @@ Weighted signal scoring
 Conditional deeper probing
 UI layer for better experience
 Final Note
-
+Sample Transcripts are included how different parts through the tree produce different reflections
 This is not a chatbot.
 
 It’s a structured reflection system—designed to help users see their day more clearly, one decision at a time.
