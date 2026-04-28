@@ -32,7 +32,7 @@ Each axis builds on the previous one, forming a single coherent reflection flow.
 How the Tree Works
 
 The system is driven entirely by a structured data file:
-/tree/reflection-tree.json
+DecisionTree.json
 
 Each node in the tree is one of the following:
 
@@ -115,15 +115,27 @@ No generated text
 All behavior is:
 
 pre-defined
+
 auditable
+
 consistent across sessions
+
+-
 Project Structure
-  DecisionTree.json    
-  README.md
-  mermaid-diagram.png                      
-  transcript1.md
-  transcript2.md
-  write-up.md
+
+DecisionTree.json 
+
+README.md
+
+mermaid-diagram.png  
+
+transcript1.md
+
+transcript2.md
+
+write-up.md
+
+-
 If implemented, the agent:
 Loads reflection-tree.json
 Starts at START
